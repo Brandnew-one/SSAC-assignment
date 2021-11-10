@@ -14,6 +14,8 @@
 		AEA746C1273A375600AD2C9D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AEA746C0273A375600AD2C9D /* Realm */; };
 		AEA746C3273A375600AD2C9D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AEA746C2273A375600AD2C9D /* RealmSwift */; };
 		AEA746C5273A377000AD2C9D /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA746C4273A377000AD2C9D /* RealmModel.swift */; };
+		AEC51781273BAA16005E6CF3 /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEC51780273BAA16005E6CF3 /* Result.storyboard */; };
+		AEC51785273BAC1D005E6CF3 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC51784273BAC1D005E6CF3 /* ResultViewController.swift */; };
 		AEFC75E22738F4DA005849CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC75E12738F4DA005849CF /* AppDelegate.swift */; };
 		AEFC75E42738F4DA005849CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC75E32738F4DA005849CF /* SceneDelegate.swift */; };
 		AEFC75E62738F4DA005849CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC75E52738F4DA005849CF /* ViewController.swift */; };
@@ -34,6 +36,8 @@
 		AE987881273AB2E3003050F9 /* ChangeMemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangeMemo.storyboard; sourceTree = "<group>"; };
 		AE987883273AB300003050F9 /* ChangeMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMemoViewController.swift; sourceTree = "<group>"; };
 		AEA746C4273A377000AD2C9D /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		AEC51780273BAA16005E6CF3 /* Result.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Result.storyboard; sourceTree = "<group>"; };
+		AEC51784273BAC1D005E6CF3 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		AEFC75DE2738F4DA005849CF /* Assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEFC75E12738F4DA005849CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEFC75E32738F4DA005849CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +103,24 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		AEC51782273BABC6005E6CF3 /* Change */ = {
+			isa = PBXGroup;
+			children = (
+				AE987883273AB300003050F9 /* ChangeMemoViewController.swift */,
+				AE987881273AB2E3003050F9 /* ChangeMemo.storyboard */,
+			);
+			path = Change;
+			sourceTree = "<group>";
+		};
+		AEC51783273BABDB005E6CF3 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				AEFC75FE2738F833005849CF /* MemoTableViewCell.xib */,
+				AEFC75FD2738F833005849CF /* MemoTableViewCell.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
 		AEFC75D52738F4DA005849CF = {
 			isa = PBXGroup;
 			children = (
@@ -124,13 +146,13 @@
 				AEFC75EA2738F4DE005849CF /* Assets.xcassets */,
 				AEFC75EF2738F4DF005849CF /* Info.plist */,
 				AEA746B9273A35A100AD2C9D /* Realm */,
-				AEFC75FD2738F833005849CF /* MemoTableViewCell.swift */,
-				AEFC75FE2738F833005849CF /* MemoTableViewCell.xib */,
+				AEC51783273BABDB005E6CF3 /* Table */,
 				AEFC760327391439005849CF /* MemoList */,
 				AE5B21072739731700C3F580 /* MemoView */,
 				AE5B21082739734E00C3F580 /* SearchView */,
-				AE987881273AB2E3003050F9 /* ChangeMemo.storyboard */,
-				AE987883273AB300003050F9 /* ChangeMemoViewController.swift */,
+				AEC51782273BABC6005E6CF3 /* Change */,
+				AEC51780273BAA16005E6CF3 /* Result.storyboard */,
+				AEC51784273BAC1D005E6CF3 /* ResultViewController.swift */,
 			);
 			path = Assignment2;
 			sourceTree = "<group>";
@@ -210,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEFC760227391424005849CF /* Memo.storyboard in Resources */,
+				AEC51781273BAA16005E6CF3 /* Result.storyboard in Resources */,
 				AE987882273AB2E3003050F9 /* ChangeMemo.storyboard in Resources */,
 				AEFC75F62738F63E005849CF /* MemoList.storyboard in Resources */,
 				AEFC75EE2738F4DF005849CF /* LaunchScreen.storyboard in Resources */,
@@ -232,6 +255,7 @@
 				AE5B21062739729D00C3F580 /* SearchViewController.swift in Sources */,
 				AEFC75F82738F654005849CF /* MemoListViewController.swift in Sources */,
 				AEFC7605273914FA005849CF /* MemoViewController.swift in Sources */,
+				AEC51785273BAC1D005E6CF3 /* ResultViewController.swift in Sources */,
 				AEFC75E62738F4DA005849CF /* ViewController.swift in Sources */,
 				AEA746C5273A377000AD2C9D /* RealmModel.swift in Sources */,
 				AEFC75E22738F4DA005849CF /* AppDelegate.swift in Sources */,

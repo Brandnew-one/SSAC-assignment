@@ -10,16 +10,11 @@ import RealmSwift
 
 class MemoListViewController: UIViewController {
     
-    //TEST용 나중에 지우기
-    var numberOfPin: Int = 2
-    var numberOfMemo: Int = 8
-    
     @IBOutlet weak var tableView: UITableView!
     
     var localRealm = try! Realm()
     var memo: Results<UserMemo>!
     var pinMemo: Results<UserPinMemo>!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,22 +22,26 @@ class MemoListViewController: UIViewController {
         tableView.register(nibName, forCellReuseIdentifier: MemoTableViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
-        //tableView.contentInset = UIEdgeInsets(top: 100, left: 0, bottom: 0, right: 0)
-        //tableView.style = .insetGrouped
+        
+        let sb = UIStoryboard(name: "Result", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
         
         //SearchController -> 공부 필요 일단 구현을 위해서 복사만 한 상태임!
-        let searchController = UISearchController(searchResultsController: nil)
+        let searchController = UISearchController(searchResultsController: vc)
         searchController.searchBar.placeholder = "Search"
-        searchController.hidesNavigationBarDuringPresentation = false // SearchBar 가 활성화 되면 Navigation title 이 사라짐
-        
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchResultsUpdater = self
+
         self.navigationItem.searchController = searchController
         self.navigationItem.title = "Search"
-        self.navigationController?.navigationBar.prefersLargeTitles = true // Large title로 하고싶을 때 추가
-        self.navigationItem.hidesSearchBarWhenScrolling = false // 스크롤할떄도 searchBar 가 사라지지 않도록 설정
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.hidesSearchBarWhenScrolling = false
         
         print("Realm:",localRealm.configuration.fileURL!)
         memo = localRealm.objects(UserMemo.self).sorted(byKeyPath: "memoDate", ascending: false)
         pinMemo = localRealm.objects(UserPinMemo.self).sorted(byKeyPath: "memoDate", ascending: false)
+        
+        
     }
     
     @IBAction func editButtonClicked(_ sender: UIBarButtonItem) {
@@ -61,6 +60,23 @@ class MemoListViewController: UIViewController {
     }
     
 }
+
+extension MemoListViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        //dump(searchController.searchBar.text)
+        guard let text = searchController.searchBar.text else { return }
+        
+        let sb = UIStoryboard(name: "Result", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
+        vc.findWord = text
+        //vc.memo = localRealm.objects(UserMemo.self).sorted(byKeyPath: "memoDate", ascending: false).filter("memoTitle == %@ OR memoContent == %@",text,text)
+        //vc.pinMemo = localRealm.objects(UserPinMemo.self).sorted(byKeyPath: "memoDate", ascending: false).filter("memoTitle == %@ OR memoContent == %@",text,text)
+        //vc.tableView.reloadData()
+        //tableView.reloadData()
+    }
+}
+
 
 
 extension MemoListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -168,10 +184,14 @@ extension MemoListViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             vc.memoTitle = pinMemo[indexPath.row].memoTitle!
             vc.memoContent = pinMemo[indexPath.row].memoContent!
+            vc.isPin = true
+            vc.row = indexPath.row
         }
         else {
             vc.memoTitle = memo[indexPath.row].memoTitle!
             vc.memoContent = memo[indexPath.row].memoContent!
+            vc.isPin = false
+            vc.row = indexPath.row
         }
         
         navigationController?.pushViewController(vc, animated: true)
@@ -236,22 +256,4 @@ extension MemoListViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension MemoListViewController: UISearchBarDelegate {
-    
-    // 검색 버튼(키보드 리턴키) 눌렀을 때 실행
-        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            print(#function)
-        }
-        
-        //취소버튼 눌렀을 때 실행
-        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-            print(#function)
-            searchBar.setShowsCancelButton(false, animated: true)
-        }
-        
-        //서치바에서 커서 깜빡이기 시작할 때
-        func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-            print(#function)
-            searchBar.setShowsCancelButton(true, animated: true)
-        }
-}
+
