@@ -10,31 +10,31 @@ import RealmSwift
 
 class ResultViewController: UIViewController {
     
-    var findWord: String = "" {
+    var findWord: String = "1" {
         didSet {
             print("변경감지")
             print(findWord)
             memo = localRealm.objects(UserMemo.self).filter("memoTitle == %@",findWord)
             pinMemo = localRealm.objects(UserPinMemo.self).filter("memoTitle == %@",findWord)
-            if let tableView = tableView {
-                tableView.reloadData()
-            }
-            //tableView.reloadData()
+            print(memo.count, pinMemo.count)
+            //self.tableView.reloadData()
+            self.tableView?.reloadData()
+            
+            
         }
     }
     
     var localRealm = try! Realm()
     var memo: Results<UserMemo>!
     var pinMemo: Results<UserPinMemo>!
-    
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let nibName = UINib(nibName: MemoTableViewCell.identifier, bundle: nil)
-        tableView.register(nibName, forCellReuseIdentifier: MemoTableViewCell.identifier)
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.tableView.register(nibName, forCellReuseIdentifier: MemoTableViewCell.identifier)
+//        self.tableView.delegate = self
+//        self.tableView.dataSource = self
         
         memo = localRealm.objects(UserMemo.self).sorted(byKeyPath: "memoDate", ascending: false)
         pinMemo = localRealm.objects(UserPinMemo.self).sorted(byKeyPath: "memoDate", ascending: false)
@@ -43,7 +43,7 @@ class ResultViewController: UIViewController {
     
 //    self.memo = localRealm.objects(UserMemo.self).sorted(byKeyPath: "memoDate", ascending: false).filter("memoTitle == %@ OR memoContent == %@",findWord,findWord)
 //    self.pinMemo = localRealm.objects(UserMemo.self).sorted(byKeyPath: "memoDate", ascending: false).filter("memoTitle == %@ OR memoContent == %@",findWord,findWord)
-
+        
 }
 
 extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
@@ -69,12 +69,12 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier) as? MemoTableViewCell else {
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier) as? MemoTableViewCell else {
             return UITableViewCell()
         }
         
         if indexPath.section == 0 {
-            if pinMemo.count != 0 {
+            //if pinMemo.count != 0 {
                 let row = pinMemo[indexPath.row]
                 cell.memoContentLabel.text = row.memoContent
                 cell.memoTitleLabel.text = row.memoTitle
@@ -84,11 +84,12 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
                 date.locale = Locale(identifier: "ko_KR")
                 let nowDate = date.string(from: row.memoDate!)
                 cell.memoDateLabel.text = nowDate
-            }
+                return cell
+            //}
         }
         
         else {
-            if memo.count != 0 {
+            //if memo.count != 0 {
                 let row = memo[indexPath.row]
                 cell.memoContentLabel.text = row.memoContent
                 cell.memoTitleLabel.text = row.memoTitle
@@ -98,8 +99,9 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
                 date.locale = Locale(identifier: "ko_KR")
                 let nowDate = date.string(from: row.memoDate!)
                 cell.memoDateLabel.text = nowDate
-            }
+                return cell
+            //}
         }
-        return cell
+        //return cell
     }
 }

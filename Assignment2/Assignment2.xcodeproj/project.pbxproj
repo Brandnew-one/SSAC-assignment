@@ -9,8 +9,12 @@
 /* Begin PBXBuildFile section */
 		AE5B21042739728D00C3F580 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE5B21032739728D00C3F580 /* Search.storyboard */; };
 		AE5B21062739729D00C3F580 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5B21052739729D00C3F580 /* SearchViewController.swift */; };
+		AE78DB9A273D9B3800EAA275 /* Label +Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE78DB99273D9B3800EAA275 /* Label +Extension.swift */; };
 		AE987882273AB2E3003050F9 /* ChangeMemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE987881273AB2E3003050F9 /* ChangeMemo.storyboard */; };
 		AE987884273AB300003050F9 /* ChangeMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE987883273AB300003050F9 /* ChangeMemoViewController.swift */; };
+		AEA3A0A1273E35AC00260BD3 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA3A0A0273E35AC00260BD3 /* Popup.storyboard */; };
+		AEA3A0A3273E3A7900260BD3 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3A0A2273E3A7900260BD3 /* PopupViewController.swift */; };
+		AEA48FC6273E0C6B00F8AED1 /* Alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA48FC5273E0C6B00F8AED1 /* Alert+Extension.swift */; };
 		AEA746C1273A375600AD2C9D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AEA746C0273A375600AD2C9D /* Realm */; };
 		AEA746C3273A375600AD2C9D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AEA746C2273A375600AD2C9D /* RealmSwift */; };
 		AEA746C5273A377000AD2C9D /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA746C4273A377000AD2C9D /* RealmModel.swift */; };
@@ -33,8 +37,12 @@
 /* Begin PBXFileReference section */
 		AE5B21032739728D00C3F580 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		AE5B21052739729D00C3F580 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		AE78DB99273D9B3800EAA275 /* Label +Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label +Extension.swift"; sourceTree = "<group>"; };
 		AE987881273AB2E3003050F9 /* ChangeMemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangeMemo.storyboard; sourceTree = "<group>"; };
 		AE987883273AB300003050F9 /* ChangeMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMemoViewController.swift; sourceTree = "<group>"; };
+		AEA3A0A0273E35AC00260BD3 /* Popup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
+		AEA3A0A2273E3A7900260BD3 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		AEA48FC5273E0C6B00F8AED1 /* Alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extension.swift"; sourceTree = "<group>"; };
 		AEA746C4273A377000AD2C9D /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		AEC51780273BAA16005E6CF3 /* Result.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Result.storyboard; sourceTree = "<group>"; };
 		AEC51784273BAC1D005E6CF3 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +103,15 @@
 			path = default;
 			sourceTree = "<group>";
 		};
+		AEA3A09F273E343400260BD3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AEA48FC5273E0C6B00F8AED1 /* Alert+Extension.swift */,
+				AE78DB99273D9B3800EAA275 /* Label +Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		AEA746B9273A35A100AD2C9D /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +170,9 @@
 				AEC51782273BABC6005E6CF3 /* Change */,
 				AEC51780273BAA16005E6CF3 /* Result.storyboard */,
 				AEC51784273BAC1D005E6CF3 /* ResultViewController.swift */,
+				AEA3A09F273E343400260BD3 /* Extension */,
+				AEA3A0A0273E35AC00260BD3 /* Popup.storyboard */,
+				AEA3A0A2273E3A7900260BD3 /* PopupViewController.swift */,
 			);
 			path = Assignment2;
 			sourceTree = "<group>";
@@ -240,6 +260,7 @@
 				AE5B21042739728D00C3F580 /* Search.storyboard in Resources */,
 				AEFC75E92738F4DA005849CF /* Main.storyboard in Resources */,
 				AEFC76002738F833005849CF /* MemoTableViewCell.xib in Resources */,
+				AEA3A0A1273E35AC00260BD3 /* Popup.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,9 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE78DB9A273D9B3800EAA275 /* Label +Extension.swift in Sources */,
 				AE987884273AB300003050F9 /* ChangeMemoViewController.swift in Sources */,
 				AEFC75FF2738F833005849CF /* MemoTableViewCell.swift in Sources */,
 				AE5B21062739729D00C3F580 /* SearchViewController.swift in Sources */,
+				AEA48FC6273E0C6B00F8AED1 /* Alert+Extension.swift in Sources */,
 				AEFC75F82738F654005849CF /* MemoListViewController.swift in Sources */,
 				AEFC7605273914FA005849CF /* MemoViewController.swift in Sources */,
 				AEC51785273BAC1D005E6CF3 /* ResultViewController.swift in Sources */,
@@ -260,6 +283,7 @@
 				AEA746C5273A377000AD2C9D /* RealmModel.swift in Sources */,
 				AEFC75E22738F4DA005849CF /* AppDelegate.swift in Sources */,
 				AEFC75E42738F4DA005849CF /* SceneDelegate.swift in Sources */,
+				AEA3A0A3273E3A7900260BD3 /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
