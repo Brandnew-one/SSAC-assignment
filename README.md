@@ -18,8 +18,7 @@
 
 | 실행화면  | iphone 13 Pro Max  | iphone SE2  |
 | --- | --- | --- |
-| 시작화면  | ![13시작화면](https://user-images.githubusercontent.com/88618825/141425243-c4089571-57ed-4a1f-8ba5-65000e15a0d8.gif)  |  
-https://user-images.githubusercontent.com/88618825/141426255-30399823-e370-4ba5-8943-29e366988c28.mp4
+| 시작화면  | ![13시작화면](https://user-images.githubusercontent.com/88618825/141425243-c4089571-57ed-4a1f-8ba5-65000e15a0d8.gif)  | ![시작화면](https://user-images.githubusercontent.com/88618825/141426829-4ac6bce2-4eb1-4cdf-b7da-2a2afb33ed22.gif) |
 
      | 
 | 텍스트 추가 및 수정  | ![13 메모 추가: 수정](https://user-images.githubusercontent.com/88618825/141425317-f680453d-d4f3-482b-a650-e9afccdb9682.gif)
