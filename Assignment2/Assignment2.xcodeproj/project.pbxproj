@@ -75,6 +75,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE3E9C8A273E5C8000BB3A0A /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				AEA3A0A2273E3A7900260BD3 /* PopupViewController.swift */,
+				AEA3A0A0273E35AC00260BD3 /* Popup.storyboard */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
 		AE5B21072739731700C3F580 /* MemoView */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,8 +180,7 @@
 				AEC51780273BAA16005E6CF3 /* Result.storyboard */,
 				AEC51784273BAC1D005E6CF3 /* ResultViewController.swift */,
 				AEA3A09F273E343400260BD3 /* Extension */,
-				AEA3A0A0273E35AC00260BD3 /* Popup.storyboard */,
-				AEA3A0A2273E3A7900260BD3 /* PopupViewController.swift */,
+				AE3E9C8A273E5C8000BB3A0A /* Popup */,
 			);
 			path = Assignment2;
 			sourceTree = "<group>";
