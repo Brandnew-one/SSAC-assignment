@@ -1,4 +1,4 @@
-# 📦 SeSSAC Assignment 
+# 📦 SeSAC Assignment 
 
 ## Goal 
 * SeSSAC 과제 제출 
