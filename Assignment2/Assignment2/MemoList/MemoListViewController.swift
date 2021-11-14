@@ -30,7 +30,7 @@ class MemoListViewController: UIViewController {
     var localRealm = try! Realm()
     var memo: Results<UserMemo>!
     var pinMemo: Results<UserPinMemo>!
-    
+
     var memoSearch: Results<UserMemo>!
     var pinMemoSearch: Results<UserPinMemo>!
     
@@ -73,9 +73,8 @@ class MemoListViewController: UIViewController {
         }
     }
     
+    //메모 생성
     @IBAction func editButtonClicked(_ sender: UIBarButtonItem) {
-        
-        //print("Bar Button Clicked")
         let sb = UIStoryboard(name: "Memo", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "MemoViewController") as! MemoViewController
         
@@ -86,12 +85,6 @@ class MemoListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "\(memo.count + pinMemo.count) 개의 메모"
-//        if isFiltering() {
-//            self.navigationItem.title = "\(memoSearch.count + pinMemoSearch.count) 개를 찾았어요"
-//        }
-//        else {
-//            self.navigationItem.title = "\(memo.count + pinMemo.count) 개의 메모"
-//        }
         tableView.reloadData()
     }
     
@@ -415,58 +408,6 @@ extension MemoListViewController: UITableViewDelegate, UITableViewDataSource {
             self.present(alert, animated: true) {
                 print("얼럿이 올라왔습니다")
             }
-            
-//            //Pin 해제
-//            if self.isFiltering() {
-//                if indexPath.section == 0 {
-//                    let row = self.pinMemoSearch[indexPath.row]
-//                    try! self.localRealm.write {
-//                        let task = UserMemo(memoTitle: row.memoTitle, memoDate: row.memoDate, memoContent: row.memoContent)
-//                        self.localRealm.add(task)
-//                        self.localRealm.delete(row)
-//                    }
-//                }
-//                //Pin 고정
-//                else {
-//                    if self.pinMemo.count < 5 {
-//                        let row = self.memoSearch[indexPath.row]
-//                        try! self.localRealm.write {
-//                            let task = UserPinMemo(memoTitle: row.memoTitle, memoDate: row.memoDate, memoContent: row.memoContent)
-//                            self.localRealm.add(task)
-//                            self.localRealm.delete(row)
-//                        }
-//                    }
-//                    else {
-//                        self.fiveAlert()
-//                    }
-//                }
-//            }
-//
-//            else {
-//                if indexPath.section == 0 {
-//                    let row = self.pinMemo[indexPath.row]
-//                    try! self.localRealm.write {
-//                        let task = UserMemo(memoTitle: row.memoTitle, memoDate: row.memoDate, memoContent: row.memoContent)
-//                        self.localRealm.add(task)
-//                        self.localRealm.delete(row)
-//                    }
-//                }
-//                //Pin 고정
-//                else {
-//                    if self.pinMemo.count < 5 {
-//                        let row = self.memo[indexPath.row]
-//                        try! self.localRealm.write {
-//                            let task = UserPinMemo(memoTitle: row.memoTitle, memoDate: row.memoDate, memoContent: row.memoContent)
-//                            self.localRealm.add(task)
-//                            self.localRealm.delete(row)
-//                        }
-//                    }
-//                    else {
-//                        self.fiveAlert()
-//                    }
-//                }
-//            }
-//            tableView.reloadData()
             success(true)
         })
         pinAction.backgroundColor = .systemOrange
@@ -513,6 +454,7 @@ extension MemoListViewController: UITableViewDelegate, UITableViewDataSource {
                 }
 
                 tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.navigationItem.title = "\(self.memo.count + self.pinMemo.count) 개의 메모"
                 tableView.reloadData()
             }
             let cancle = UIAlertAction(title: "취소", style: .cancel)
@@ -523,46 +465,9 @@ extension MemoListViewController: UITableViewDelegate, UITableViewDataSource {
             self.present(alert, animated: true) {
                 print("얼럿이 올라왔습니다")
             }
-            
-            
-//            if self.isFiltering() {
-//                if indexPath.section == 0 {
-//                    let row = self.pinMemoSearch[indexPath.row]
-//                    try! self.localRealm.write {
-//                        self.localRealm.delete(row)
-//                    }
-//                }
-//
-//                else {
-//                    let row = self.memoSearch[indexPath.row]
-//                    try! self.localRealm.write {
-//                        self.localRealm.delete(row)
-//                    }
-//                }
-//            }
-//
-//            else {
-//                if indexPath.section == 0 {
-//                    let row = self.pinMemo[indexPath.row]
-//                    try! self.localRealm.write {
-//                        self.localRealm.delete(row)
-//                    }
-//                }
-//
-//                else {
-//                    let row = self.memo[indexPath.row]
-//                    try! self.localRealm.write {
-//                        self.localRealm.delete(row)
-//                    }
-//                }
-//            }
-//
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//            tableView.reloadData()
             success(true)
         })
         deleteAction.backgroundColor = .systemRed
         return UISwipeActionsConfiguration(actions:[deleteAction])
     }
-    
 }
