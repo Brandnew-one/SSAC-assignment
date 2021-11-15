@@ -96,7 +96,29 @@ class MemoListViewController: UIViewController {
       return searchController.isActive && !searchBarIsEmpty()
     }
     
-    
+    func dateCal(nowDate: Date) -> String {
+        
+        let date = DateFormatter()
+        let releasedDate = Calendar.current.dateComponents([.weekOfYear, .day], from: nowDate)
+        let nowDateCalendar = Calendar.current.dateComponents([.weekOfYear, .day], from: Date())
+        date.locale = Locale(identifier: "ko_KR")
+        
+        //날짜가 같은 경우 시간만 나오도록 설정
+        if releasedDate.day == nowDateCalendar.day {
+            date.dateFormat = "a hh:mm"
+        }
+        //같은주일 경우에는 요일만 나오도록 설정
+        else if releasedDate.weekOfYear == nowDateCalendar.weekOfYear {
+            date.dateFormat = "EEEE"
+        }
+        //그외의 경우에는 모든 형식이 나오도록 설정
+        else {
+            date.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분"
+        }
+        let nowDateForm = date.string(from: nowDate)
+        
+        return nowDateForm
+    }
 }
 
 extension MemoListViewController: UISearchResultsUpdating {
@@ -216,6 +238,8 @@ extension MemoListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        
+        
         if isFiltering() {
             if indexPath.section == 0 {
                 let row = pinMemoSearch[indexPath.row]
@@ -241,11 +265,12 @@ extension MemoListViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.memoTitleLabel.highlight(searchText: searchController.searchBar.text!)
                 cell.memoContentLabel.highlight(searchText: searchController.searchBar.text!)
                 
-                let date = DateFormatter()
-                date.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분"
-                date.locale = Locale(identifier: "ko_KR")
-                let nowDate = date.string(from: row.memoDate!)
-                cell.memoDateLabel.text = nowDate
+//                let date = DateFormatter()
+//                date.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분"
+//                date.locale = Locale(identifier: "ko_KR")
+//                let nowDate = date.string(from: row.memoDate!)
+                
+                cell.memoDateLabel.text = dateCal(nowDate: row.memoDate!)
                 return cell
             }
         }
@@ -260,11 +285,12 @@ extension MemoListViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.memoTitleLabel.textColor = .white
                 cell.memoContentLabel.textColor = .white
                 
-                let date = DateFormatter()
-                date.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분"
-                date.locale = Locale(identifier: "ko_KR")
-                let nowDate = date.string(from: row.memoDate!)
-                cell.memoDateLabel.text = nowDate
+//                let date = DateFormatter()
+//                date.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분"
+//                date.locale = Locale(identifier: "ko_KR")
+//                let nowDate = date.string(from: row.memoDate!)
+//                cell.memoDateLabel.text = nowDate
+                cell.memoDateLabel.text = dateCal(nowDate: row.memoDate!)
                 //cell.memoContentLabel.text = row.memoContent
                 cell.memoContentLabel.text = row.memoContent?.replacingOccurrences(of: "\n", with: "")
                 
@@ -279,11 +305,12 @@ extension MemoListViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.memoTitleLabel.textColor = .white
                 cell.memoContentLabel.textColor = .white
                 
-                let date = DateFormatter()
-                date.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분"
-                date.locale = Locale(identifier: "ko_KR")
-                let nowDate = date.string(from: row.memoDate!)
-                cell.memoDateLabel.text = nowDate
+//                let date = DateFormatter()
+//                date.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분"
+//                date.locale = Locale(identifier: "ko_KR")
+//                let nowDate = date.string(from: row.memoDate!)
+//                cell.memoDateLabel.text = nowDate
+                cell.memoDateLabel.text = dateCal(nowDate: row.memoDate!)
                 
                 cell.memoContentLabel.text = row.memoContent?.replacingOccurrences(of: "\n", with: "")
                 
