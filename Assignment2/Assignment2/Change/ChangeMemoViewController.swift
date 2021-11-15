@@ -12,6 +12,7 @@ class ChangeMemoViewController: UIViewController {
     
     var memoTitle: String = ""
     var memoContent: String = ""
+    var memoDate: String = ""
     var isPin: Bool = false //선택한 셀이 핀 셀인가 아닌가를 판별
     var row: Int = 0 // 선택한 셀이 몇번째 row 에 저장되어 있는가
     
@@ -57,8 +58,42 @@ class ChangeMemoViewController: UIViewController {
     
     @objc
     func shareButtonClicked() {
-        navigationController?.popViewController(animated: true)
+        saveFile(stringData: memoTextView.text, fileName: memoDate)
+        presentActivityViewController()
+        //navigationController?.popViewController(animated: true)
     }
+    
+    func saveFile(stringData: String, fileName: String) {
+        let textFileName = fileName + ".txt"
+        let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let sampleFileName = directory.appendingPathComponent(textFileName)
+        do {
+            try stringData.write(to: sampleFileName, atomically: true, encoding: .utf8)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func documentDirectoryPath() -> String? {
+            let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+            let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask //디렉토리내 제한걸어 준다고생각
+            let path = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+            //path 는 배열형태, 0번째 인덱스에 url 이 저장된다
+            
+            if let directoryPath = path.first {
+                return directoryPath
+            }
+            return nil
+        }
+    
+    func presentActivityViewController() {
+            //압축 파일 경로 가져오기
+            let fileName = (documentDirectoryPath()! as NSString).appendingPathComponent("\(memoDate).txt")
+            let fileURL = URL(fileURLWithPath: fileName)
+            
+            let vc = UIActivityViewController(activityItems: [fileURL], applicationActivities: [])
+            self.present(vc, animated: true, completion: nil)
+        }
     
     //변경화면에서 Realm 데이터 업데이트
     func updateRealm() {

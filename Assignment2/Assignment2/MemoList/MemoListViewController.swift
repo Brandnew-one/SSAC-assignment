@@ -302,9 +302,15 @@ extension MemoListViewController: UITableViewDelegate, UITableViewDataSource {
         let sb = UIStoryboard(name: "ChangeMemo", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "ChangeMemoViewController") as! ChangeMemoViewController
         
+        //현재 시간을 기준으로 공유할 파일명을 설정
+        let date = DateFormatter()
+        date.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분"
+        date.locale = Locale(identifier: "ko_KR")
+        let nowDate = date.string(from: Date())
+        vc.memoDate = nowDate
+        
         //pin or not
         //row 값을 넘겨줘야 수정된걸 반영 해줄 수 있다.
-        
         if self.isFiltering() {
             if indexPath.section == 0 {
                 vc.memoTitle = pinMemoSearch[indexPath.row].memoTitle!

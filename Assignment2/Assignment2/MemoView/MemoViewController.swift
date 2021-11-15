@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 import RealmSwift
 
 class MemoViewController: UIViewController {
@@ -36,6 +37,8 @@ class MemoViewController: UIViewController {
         print(#function)
     }
     
+
+    
     @objc
     func backButtonClicked() {
         navigationController?.popViewController(animated: true)
@@ -47,10 +50,13 @@ class MemoViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    
+    //현재 텍스트뷰에 저장된 텍스트를 저장하도록 설정해보자!
     @objc
     func shareButtonClicked() {
-        navigationController?.popViewController(animated: true)
+      
     }
+
     
     func updateRealm() {
         let stringArray = memoTextView.text.components(separatedBy: "\n")
